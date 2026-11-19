@@ -20,6 +20,14 @@ def load(name):
 
 
 class FinalArchitectureTests(unittest.TestCase):
+    def test_browser_launcher_supports_three_engine_names(self):
+        script = ROOT / "lattes-atualizar" / "scripts" / "live_lattes_session.py"
+        text = script.read_text(encoding="utf-8")
+        self.assertIn('"chrome"', text)
+        self.assertIn('"edge"', text)
+        self.assertIn('"firefox"', text)
+        self.assertIn("find_browser_executable", text)
+
     def test_blank_xlsx_template_is_generated_without_personal_data(self):
         script = ROOT / "lattes-atualizar" / "scripts" / "generate_template_xlsx.py"
         spec = importlib.util.spec_from_file_location("template", script)

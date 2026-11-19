@@ -2,6 +2,15 @@
 
 Este arquivo orienta uma integração opcional. A skill não exige Browser Use nem um provedor específico.
 
+## Compatibilidade de navegador
+
+| Navegador | Suporte |
+| --- | --- |
+| Chrome | Reconexão CDP a janela aberta ou perfil persistente |
+| Edge | Chromium com CDP e perfil persistente |
+| Firefox | Sessão humana Playwright |
+| Chromium | Perfil persistente Playwright |
+
 ## Quando usar
 
 Use o navegador somente após o usuário autorizar o lote concreto e apenas para consultar, preencher e salvar campos aprovados. Prefira um perfil ou navegador já autenticado pelo usuário. Não peça senha, sessão, cookie ou código MFA no chat.

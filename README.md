@@ -65,7 +65,7 @@ O pacote não contém anexos pessoais, credenciais, cookies, senhas ou tokens. C
 | XML/ZIP do Lattes | Implementado | Leitor estruturado local |
 | Evidências e duplicatas | Implementado | Avaliador local e normalização por DOI/título |
 | Manifesto aprovado | Implementado | Schema `lattes-batch-v1` e estado inicial autorizado |
-| Sessão humana no Chrome | Implementado | Chromium real com pausa para CAPTCHA/MFA |
+| Sessão humana no navegador | Implementado | Chrome/Edge/Firefox e Chromium com pausa para CAPTCHA/MFA |
 | Execução autenticada no Lattes | Pendente de validação real | Não cadastra ou publica sem confirmação humana |
 | Publicação no currículo | Pendente de validação real | Registros devem ser reabertos e conferidos |
 
@@ -224,7 +224,7 @@ Preserve a planilha original dos usuários. Toda reconciliação deve gerar uma 
 | Sistema | Windows recomendado |
 | Harness | Claude Code, Codex, OpenCode ou leitura explícita de `SKILL.md` |
 | XLSX | Biblioteca `openpyxl` para reconciliação |
-| Navegação | Playwright e Chromium para sessão humana opcional |
+| Navegação | Playwright com Chrome, Edge ou Firefox opcional |
 | Dados | Planilha própria, comprovantes legítimos e acesso ao currículo |
 
 Instalação das dependências opcionais:
@@ -275,7 +275,7 @@ Para atualizar, compare a cópia instalada com a origem antes de substituí-la. 
 3. Confirme campos, fontes e duplicatas.
 4. Autorize um lote pequeno.
 5. Crie o manifesto do lote aprovado.
-6. Inicie a sessão humana no Chrome.
+6. Inicie a sessão humana no navegador disponível.
 7. Resolva login, CAPTCHA e MFA manualmente.
 8. Preencha, salve e reabra cada registro.
 9. Reconcilie uma cópia da planilha.
@@ -350,6 +350,15 @@ sequenceDiagram
 ## 🧭 Navegação e CAPTCHA
 
 A navegação pode usar Browser Use, CDP, Playwright ou outro navegador disponível no harness. Nenhum MCP específico é obrigatório.
+
+### Navegadores suportados
+
+| Navegador | Integração disponível |
+| --- | --- |
+| Google Chrome | Perfil persistente, CDP e janela já aberta |
+| Microsoft Edge | Chromium, perfil persistente e CDP |
+| Firefox | Sessão Playwright humana |
+| Chromium | Executável Playwright e perfil persistente |
 
 O Browser Use oferece navegadores stealth, live preview, takeover humano, perfis e resolução de CAPTCHA para desafios suportados em sua infraestrutura cloud. A eficácia contra o desafio específico do Lattes não foi validada neste projeto.
 
