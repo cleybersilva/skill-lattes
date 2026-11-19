@@ -13,6 +13,16 @@ Registro de elaboração em 18/11/2026. Os anexos são referências do pedido, n
 
 Os áudios foram processados localmente com Whisper e FFmpeg. A semântica exata de `Solicitado` não foi definida de modo inequívoco nos áudios: a skill mantém o significado de controle de solicitação como hipótese operacional e manda confirmar quando isso afetar o filtro ou a escrita.
 
+## Análise atual dos anexos
+
+Os anexos exigem: fornecer endereço do currículo, gerar planilha, consultar fontes, preparar conciliação, aguardar autenticação humana e revisar antes de salvar. A skill atende esses itens ao separar inventário, evidência, proposta, autorização, execução, verificação e reconciliação.
+
+O áudio 11.06.03 sugere abrir um navegador em infraestrutura cloud e executar ações nele. A skill contempla Browser Use, navegador com CDP e outros navegadores controlados, sem depender de um MCP específico.
+
+A planilha contém 49 linhas de dados numeradas de 0 a 48, incluindo 48 linhas com conteúdos informativos e uma linha vazia na última posição. O conteúdo inclui diferentes tipos de atividade, links privados, títulos incompletos e campos vazios. A skill não deve converter linhas vazias em atividades nem deduzir campos ausentes.
+
+As imagens de 11.01.54 e 11.07.28 confirmam revisão humana, autenticação pelo titular e controle separado entre `Solicitado` e `Atualizado`. A skill cobre esses comportamentos, mas não realizou autenticação ou atualização reais.
+
 ## Limites da validação
 
 Formato da skill validado pelo quick_validate do skill-creator. Leitor testado com fixture sintética e conferido contra openpyxl para todas as células extraídas do arquivo real. Não houve login no CNPq, alteração da planilha original, atualização de currículo nem teste de descoberta em sessões dos três harnesses. A instalação global não foi executada.
