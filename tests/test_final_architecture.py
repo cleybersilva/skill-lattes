@@ -20,6 +20,24 @@ def load(name):
 
 
 class FinalArchitectureTests(unittest.TestCase):
+    def test_browser_adapter_builds_safe_plan_and_requires_authorization(self):
+        module = load("lattes_browser_adapter.py")
+        manifest = {
+            "schema": "lattes-batch-v1",
+            "items": [
+                {"key": "1", "sheet": "Página1", "row": 2, "proposal": {"title": "A"}, "authorized": True},
+                {"key": "2", "sheet": "Página1", "row": 3, "proposal": {"title": "B"}, "authorized": False},
+            ],
+        }
+        plan = module.build_plan(manifest)
+        self.assertEqual(plan[0]["state"], "aprovado")
+        self.assertEqual(plan[1]["state"], "bloqueado")
+
+    def test_browser_adapter_rejects_unsupported_manifest(self):
+        module = load("lattes_browser_adapter.py")
+        with self.assertRaisesRegex(ValueError, "Manifesto incompatível"):
+            module.build_plan({"schema": "outro", "items": []})
+
     def test_browser_launcher_supports_three_engine_names(self):
         script = ROOT / "lattes-atualizar" / "scripts" / "live_lattes_session.py"
         text = script.read_text(encoding="utf-8")

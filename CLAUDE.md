@@ -13,3 +13,5 @@ Antes de executar:
 7. Atualize `Atualizado` somente após confirmação.
 
 O script `lattes-atualizar/scripts/inspect_xlsx.py` só lê. A reconciliação usa `reconcile_xlsx.py` em cópia nova.
+
+Para lote real, use o manifest aprovado e `lattes_browser_adapter.py` em dry-run. Execução externa exige `--execute --confirm-human`; nunca prossiga em CAPTCHA/MFA sem confirmação.

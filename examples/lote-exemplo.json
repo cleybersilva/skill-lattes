@@ -1,0 +1,20 @@
+[
+  {
+    "key": "linha-exemplo-2",
+    "sheet": "Página1",
+    "row": 2,
+    "proposal": {
+      "Ano": 2026,
+      "Tipo": "Artigo",
+      "Subtipo": "Periódico",
+      "SubSubtipo": "Nacional",
+      "Local": "Revista Acadêmica Fictícia",
+      "Aluno": "",
+      "Obs": "Título fictício para demonstrar preenchimento correto",
+      "Link": "https://example.org/comprovante-ficticio",
+      "Solicitado": "Sim",
+      "Atualizado": "Não",
+      "Qualis": "A4"
+    }
+  }
+]

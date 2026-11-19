@@ -175,6 +175,8 @@ flowchart LR
 | [`lattes-atualizar/scripts/deduplicate.py`](lattes-atualizar/scripts/deduplicate.py) | Detecção de duplicatas por DOI ou título |
 | [`lattes-atualizar/scripts/verify_saved_record.py`](lattes-atualizar/scripts/verify_saved_record.py) | Comparação pós-salvamento com o manifesto |
 | [`lattes-atualizar/scripts/run_batch.py`](lattes-atualizar/scripts/run_batch.py) | Execução sequencial segura do lote aprovado |
+| [`lattes-atualizar/scripts/lattes_browser_adapter.py`](lattes-atualizar/scripts/lattes_browser_adapter.py) | Adapter Playwright com descoberta, pausa humana e verificação |
+| [`lattes-atualizar/scripts/execute_lattes_batch.py`](lattes-atualizar/scripts/execute_lattes_batch.py) | Orquestra execução e reconciliação pós-verificação |
 | [`lattes-atualizar/scripts/live_lattes_session.py`](lattes-atualizar/scripts/live_lattes_session.py) | Sessão real com pausa humana para login, CAPTCHA e MFA |
 | [`lattes-atualizar/scripts/simulate_captcha.py`](lattes-atualizar/scripts/simulate_captcha.py) | Simulação segura dos estados do fluxo |
 | [`assets/captcha-demo.gif`](assets/captcha-demo.gif) | Animação usada no README |
@@ -526,6 +528,19 @@ python lattes-atualizar/scripts/live_lattes_session.py --browser firefox
 
 # Reconectar a uma janela Chrome/Edge já aberta em modo CDP
 python lattes-atualizar/scripts/live_lattes_session.py --use-open-browser
+```
+
+### Planejar ou executar um lote
+
+```powershell
+# Dry-run: não abre nem altera o navegador
+python lattes-atualizar/scripts/lattes_browser_adapter.py ".work/lote-aprovado.json" --output ".work/plano-navegador.json"
+
+# Execução real: exige aprovação humana e confirmação de CAPTCHA/MFA
+python lattes-atualizar/scripts/lattes_browser_adapter.py ".work/lote-aprovado.json" --execute --confirm-human --url "https://lattes.cnpq.br/" --selectors "assets/lattes-e2e-selectors.json" --output ".work/execucao-lote.json"
+
+# Reconciliação após registros verificados
+python lattes-atualizar/scripts/execute_lattes_batch.py ".work/execucao-lote.json" --xlsx "Atualizacao Lattes.xlsx" --xlsx-output ".work/Atualizacao reconciliada.xlsx" --output ".work/relatorio-lote.json"
 ```
 
 ## 📄 Licença
