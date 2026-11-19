@@ -536,10 +536,11 @@ Nenhuma licença de código foi escolhida ainda. Não reutilize ou redistribua o
 
 <table>
   <tr>
-    <td width="150" align="center" valign="middle">
-      <img src="https://github.com/cleybersilva.png" width="112" alt="Cleyber Silva">
+    <td width="170" align="center" valign="middle">
+      <img src="https://github.com/cleybersilva.png" width="96" alt="Cleyber Silva"><br>
+      <img src="assets/logo-cesar.png" width="112" alt="CESAR School">
     </td>
-    <td width="650" valign="middle">
+    <td width="620" valign="middle">
       <strong>Cleyber Silva</strong><br>
       <sub>AI Scientist · SRE Engineer · TICS × Itaú</sub><br>
       <sub>Mestrando em Engenharia de Software · CESAR School</sub>
@@ -547,6 +548,7 @@ Nenhuma licença de código foi escolhida ainda. Não reutilize ou redistribua o
     <td align="right" valign="middle">
       <a href="https://github.com/cleybersilva"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a><br>
       <a href="https://github.com/cleybersilva/skill-lattes"><img alt="Repositório" src="https://img.shields.io/badge/Repo-6366F1?style=for-the-badge&logo=git&logoColor=white"></a><br>
+      <a href="https://cleybersilva.github.io/mpes-calendario/"><img alt="Calendário MPES" src="https://img.shields.io/badge/Calendário_MPES-FF6200?style=for-the-badge&logo=googlecalendar&logoColor=white"></a><br>
       <a href="http://lattes.cnpq.br/5666713747674179"><img alt="Lattes" src="https://img.shields.io/badge/Lattes-1F4E78?style=for-the-badge&logo=googlescholar&logoColor=white"></a>
     </td>
   </tr>
