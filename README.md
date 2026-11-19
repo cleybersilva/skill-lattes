@@ -9,7 +9,7 @@
 [![Markdown](https://img.shields.io/badge/Skill-Markdown-000000?style=flat&logo=markdown&logoColor=white)](lattes-atualizar/SKILL.md)
 [![Browser](https://img.shields.io/badge/browser-takeover_humano-orange.svg)](#-navegação-e-captcha)
 
-[![Testes](https://img.shields.io/badge/testes-17%2F17-brightgreen.svg)](tests/)
+[![Testes](https://img.shields.io/badge/testes-20%2F20-brightgreen.svg)](tests/)
 [![Dependências](https://img.shields.io/badge/leitor-biblioteca_padrão-brightgreen.svg)](lattes-atualizar/scripts/inspect_xlsx.py)
 [![Segredos](https://img.shields.io/badge/segredos-fora_do_Git-yellow.svg)](#-segurança)
 [![Licença](https://img.shields.io/badge/licença-não_definida-lightgrey.svg)](#-licença)
@@ -64,7 +64,9 @@ O pacote não contém anexos pessoais, credenciais, cookies, senhas ou tokens. C
 | Reconciliação XLSX | Implementado | Cópia nova, origem preservada e saída não sobrescritível |
 | XML/ZIP do Lattes | Implementado | Leitor estruturado local |
 | Evidências e duplicatas | Implementado | Avaliador local e normalização por DOI/título |
-| Manifesto aprovado | Implementado | Schema `lattes-batch-v1` e estado inicial autorizado |
+| Manifesto aprovado | Implementado | Schema `lattes-batch-v1`, aprovação e estado inicial autorizado |
+| Adapter Playwright | Implementado | Dry-run, descoberta de campos e bloqueio humano |
+| Reconciliação pós-verificação | Implementado | Relatório por item e cópia XLSX nova |
 | Sessão humana no navegador | Implementado | Chrome/Edge/Firefox e Chromium com pausa para CAPTCHA/MFA |
 | Execução autenticada no Lattes | Pendente de validação real | Não cadastra ou publica sem confirmação humana |
 | Publicação no currículo | Pendente de validação real | Registros devem ser reabertos e conferidos |
@@ -459,6 +461,10 @@ Cobertura atual:
 - execução sequencial de manifesto aprovado;
 - criação e validação do manifesto do lote;
 - fixture fictícia de formulário, CAPTCHA, timeout e reabertura.
+- adapter Playwright com dry-run e autorização humana;
+- bloqueio de execução sem confirmação humana;
+- plano seguro para lote aprovado;
+- reconciliação pós-verificação em cópia XLSX.
 
 Limitações:
 
@@ -478,13 +484,17 @@ Limitações:
 - [x] Política segura de CAPTCHA e MFA
 - [x] Simulação animada e interativa
 - [ ] Integração autenticada com o Lattes
+- [x] Adapter Playwright com manifesto aprovado
+- [x] Pausa humana para CAPTCHA/MFA
+- [x] Verificação pós-salvamento
+- [x] Reconciliação automática em cópia XLSX
+- [x] Fixture end-to-end fictícia
 - [x] Escrita segura de cópia XLSX
 - [x] Exportação XML/ZIP do Lattes
 - [x] Avaliação local de evidências
 - [x] Deduplicação por DOI e título
 - [x] Manifesto aprovado por lote
 - [x] Verificação pós-salvamento
-- [x] Fixture end-to-end fictícia
 - [ ] Validação automática contra o formulário real
 - [x] Instruções e arquivos de entrada para Claude e Codex
 - [ ] Execução comportamental autenticada em todos os harnesses
