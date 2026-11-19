@@ -534,6 +534,39 @@ Nenhuma licença de código foi escolhida ainda. Não reutilize ou redistribua o
 
 ## 👤 Autor
 
-Desenvolvido por **[Cleyber Silva](https://github.com/cleybersilva)**.
+<table>
+  <tr>
+    <td width="150" align="center" valign="middle">
+      <img src="https://github.com/cleybersilva.png" width="112" alt="Cleyber Silva">
+    </td>
+    <td width="650" valign="middle">
+      <strong>Cleyber Silva</strong><br>
+      <sub>AI Scientist · SRE Engineer · TICS × Itaú</sub><br>
+      <sub>Mestrando em Engenharia de Software · CESAR School</sub>
+    </td>
+    <td align="right" valign="middle">
+      <a href="https://github.com/cleybersilva"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a><br>
+      <a href="https://github.com/cleybersilva/skill-lattes"><img alt="Repositório" src="https://img.shields.io/badge/Repo-6366F1?style=for-the-badge&logo=git&logoColor=white"></a><br>
+      <a href="http://lattes.cnpq.br/5666713747674179"><img alt="Lattes" src="https://img.shields.io/badge/Lattes-1F4E78?style=for-the-badge&logo=googlescholar&logoColor=white"></a>
+    </td>
+  </tr>
+</table>
+
+### Formação acadêmica
+
+| Curso | Instituição |
+| --- | --- |
+| **Mestrado em Engenharia de Software** | CESAR School · 2026–2028 · em curso |
+| **Pós-graduação em Arquitetura de Soluções Avançadas de Cloud com Azure** | Anhanguera · 2026–2027 · em curso |
+| **MBA em Inteligência Artificial e Big Data** | USP · 2025–2026 |
+| **Especialização em Engenharia de Confiabilidade de Sites (SRE)** | PUC Minas · 2024–2025 |
+| **Pós-graduação em Arquitetura de Sistemas .NET com Azure** | FIAP · 2023–2024 |
+| **Especialização em Engenharia DevOps** | UNYLEYA · 2022–2023 |
+| **Mestrado em Ciências da Educação** | Veni Creator Christian University · 2022 |
+| **Doutorado em Ciências da Educação** | Veni Creator Christian University · 2025–2028 · em curso |
+
+<div align="center">
 
 Repositório: [github.com/cleybersilva/skill-lattes](https://github.com/cleybersilva/skill-lattes)
+
+</div>
