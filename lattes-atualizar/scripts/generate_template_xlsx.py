@@ -97,6 +97,36 @@ def generate(output: Path) -> None:
             cell.alignment = Alignment(vertical="top", wrap_text=True)
             cell.border = border
 
+    example = workbook.create_sheet("Exemplo fictício")
+    for column, header in enumerate(HEADERS, start=1):
+        cell = example.cell(row=1, column=column, value=header)
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+        cell.border = border
+
+    sample = {
+        "Ano": 2026,
+        "Tipo": "Artigo",
+        "Subtipo": "Periódico",
+        "SubSubtipo": "Nacional",
+        "Local": "Revista Acadêmica Fictícia",
+        "Aluno": "",
+        "Obs": "Título fictício para demonstrar preenchimento correto",
+        "Link": "https://example.org/comprovante-ficticio",
+        "Solicitado": "Sim",
+        "Atualizado": "Não",
+        "Qualis": "A4",
+    }
+    for column, header in enumerate(HEADERS, start=1):
+        cell = example.cell(row=2, column=column, value=sample.get(header))
+        cell.border = border
+        cell.alignment = Alignment(vertical="top", wrap_text=True)
+    example.freeze_panes = "A2"
+    example.auto_filter.ref = f"A1:{example.cell(row=1, column=len(HEADERS)).column_letter}2"
+    for column, header in enumerate(HEADERS, start=1):
+        example.column_dimensions[example.cell(row=1, column=column).column_letter].width = width_by_header.get(header, 18)
+
     workbook.save(output)
 
 

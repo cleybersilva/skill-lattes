@@ -44,6 +44,12 @@ class FinalArchitectureTests(unittest.TestCase):
             self.assertEqual(sheet["J1"].value, "Atualizado")
             self.assertIsNone(sheet["A2"].value)
             self.assertIn("Instruções", workbook.sheetnames)
+            self.assertIn("Exemplo fictício", workbook.sheetnames)
+            example = workbook["Exemplo fictício"]
+            self.assertEqual(example["A2"].value, 2026)
+            self.assertEqual(example["B2"].value, "Artigo")
+            self.assertEqual(example["I2"].value, "Sim")
+            self.assertEqual(example["J2"].value, "Não")
 
     def test_approved_batch_manifest_is_schema_bound(self):
         script = ROOT / "lattes-atualizar" / "scripts" / "create_batch_manifest.py"

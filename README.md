@@ -193,6 +193,8 @@ Baixe diretamente a **[Planilha Padrão Zerada para preenchimento](examples/Plan
 - aba de instruções;
 - colunas auxiliares `Coluna 4` a `Coluna 24`;
 - 500 linhas vazias prontas para uso.
+- uma aba chamada `Exemplo fictício`, separada da aba de trabalho;
+- nenhum dado real ou pessoal.
 
 Não há dados pessoais, currículos, nomes, links ou resultados no modelo.
 
