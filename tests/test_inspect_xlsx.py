@@ -3,14 +3,56 @@ import tempfile
 import unittest
 from pathlib import Path
 from zipfile import ZipFile
+import json
+import importlib.util
 
 SCRIPT = Path(__file__).resolve().parents[1] / 'lattes-atualizar/scripts/inspect_xlsx.py'
 spec = importlib.util.spec_from_file_location('reader', SCRIPT)
 reader = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(reader)
 
+WRITER = Path(__file__).resolve().parents[1] / 'lattes-atualizar/scripts/reconcile_xlsx.py'
+writer_spec = importlib.util.spec_from_file_location('writer', WRITER)
+writer = importlib.util.module_from_spec(writer_spec)
+writer_spec.loader.exec_module(writer)
+
 
 class ReaderTests(unittest.TestCase):
+    def test_reconcile_creates_copy_without_changing_source(self):
+        try:
+            from openpyxl import Workbook, load_workbook
+        except ImportError:
+            self.skipTest('openpyxl não está instalado')
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / 'input.xlsx'
+            output = root / 'reconciliado.xlsx'
+            workbook = Workbook()
+            sheet = workbook.active
+            sheet.title = 'Página1'
+            sheet['J2'] = False
+            workbook.save(source)
+            before = source.read_bytes()
+
+            report = writer.reconcile(source, output, [
+                {'sheet': 'Página1', 'cell': 'J2', 'value': True},
+            ])
+
+            self.assertEqual(source.read_bytes(), before)
+            self.assertTrue(output.is_file())
+            self.assertTrue(load_workbook(output)['Página1']['J2'].value)
+            self.assertEqual(report['applied'][0]['before'], False)
+
+    def test_reconcile_rejects_existing_output(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / 'input.xlsx'
+            output = root / 'existing.xlsx'
+            source.write_bytes(b'fixture')
+            output.write_bytes(b'existing')
+            with self.assertRaisesRegex(ValueError, 'novo'):
+                writer.reconcile(source, output, [])
+
     def test_sparse_booleans_strings_formula_and_hyperlink(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'input.xlsx'

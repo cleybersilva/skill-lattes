@@ -9,7 +9,7 @@
 [![Markdown](https://img.shields.io/badge/Skill-Markdown-000000?style=flat&logo=markdown&logoColor=white)](lattes-atualizar/SKILL.md)
 [![Browser](https://img.shields.io/badge/browser-takeover_humano-orange.svg)](#-navegação-e-captcha)
 
-[![Testes](https://img.shields.io/badge/testes-4%2F4-brightgreen.svg)](tests/)
+[![Testes](https://img.shields.io/badge/testes-9%2F9-brightgreen.svg)](tests/)
 [![Dependências](https://img.shields.io/badge/leitor-biblioteca_padrão-brightgreen.svg)](lattes-atualizar/scripts/inspect_xlsx.py)
 [![Segredos](https://img.shields.io/badge/segredos-fora_do_Git-yellow.svg)](#-segurança)
 [![Licença](https://img.shields.io/badge/licença-não_definida-lightgrey.svg)](#-licença)
@@ -95,6 +95,8 @@ flowchart LR
 | [`lattes-atualizar/references/categorias.md`](lattes-atualizar/references/categorias.md) | Regras de classificação das atividades |
 | [`lattes-atualizar/references/browser.md`](lattes-atualizar/references/browser.md) | Navegação, CAPTCHA, MFA e takeover humano |
 | [`lattes-atualizar/scripts/inspect_xlsx.py`](lattes-atualizar/scripts/inspect_xlsx.py) | Leitor XLSX somente com biblioteca padrão |
+| [`lattes-atualizar/scripts/reconcile_xlsx.py`](lattes-atualizar/scripts/reconcile_xlsx.py) | Escrita segura em cópia XLSX aprovada |
+| [`lattes-atualizar/scripts/live_lattes_session.py`](lattes-atualizar/scripts/live_lattes_session.py) | Sessão real com pausa humana para login, CAPTCHA e MFA |
 | [`lattes-atualizar/scripts/simulate_captcha.py`](lattes-atualizar/scripts/simulate_captcha.py) | Simulação segura dos estados do fluxo |
 | [`assets/captcha-demo.gif`](assets/captcha-demo.gif) | Animação usada no README |
 | [`assets/captcha-demo.html`](assets/captcha-demo.html) | Demonstração interativa no navegador |
@@ -315,9 +317,10 @@ Limitações:
 - [x] Política segura de CAPTCHA e MFA
 - [x] Simulação animada e interativa
 - [ ] Integração autenticada com o Lattes
-- [ ] Escrita segura de cópia XLSX
+- [x] Escrita segura de cópia XLSX
 - [ ] Validação automática contra o formulário real
-- [ ] Execução em todos os harnesses
+- [x] Instruções e arquivos de entrada para Claude e Codex
+- [ ] Execução comportamental autenticada em todos os harnesses
 
 ## 📄 Licença
 

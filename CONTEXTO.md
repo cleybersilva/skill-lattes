@@ -25,4 +25,4 @@ As imagens de 11.01.54 e 11.07.28 confirmam revisão humana, autenticação pelo
 
 ## Limites da validação
 
-Formato da skill validado pelo quick_validate do skill-creator. Leitor testado com fixture sintética e conferido contra openpyxl para todas as células extraídas do arquivo real. Não houve login no CNPq, alteração da planilha original, atualização de currículo nem teste de descoberta em sessões dos três harnesses. A instalação global não foi executada.
+Formato da skill validado pelo quick_validate do skill-creator. O leitor foi testado com fixture sintética e conferido contra openpyxl. O escritor gera cópia nova e preserva o arquivo original. Foram preparados testes para anexos, harnesses, simulação, leitura e reconciliação. Falta somente a sessão autenticada no Lattes com confirmação humana; não houve login ou atualização real nesta revisão.
