@@ -29,10 +29,18 @@ def main() -> int:
         print("Não compartilhe senha ou código no chat.")
         print("A janela ficará aberta até você fechá-la.")
         print("Feche o navegador quando terminar. Não envie senha ou código no chat.")
+        captcha_was_reported = False
         try:
             while True:
                 try:
-                    page.wait_for_timeout(60_000)
+                    if page.locator("iframe[src*='recaptcha'], iframe[title*='reCAPTCHA']").count():
+                        if not captcha_was_reported:
+                            print("DESAFIO DETECTADO: resolva a grade manualmente e clique em Verificar.")
+                            captcha_was_reported = True
+                    elif captcha_was_reported:
+                        print("DESAFIO CONCLUÍDO OU NAVEGOU: confira a próxima página antes de continuar.")
+                        captcha_was_reported = False
+                    page.wait_for_timeout(5_000)
                 except Exception:
                     break
                 if page.is_closed():
