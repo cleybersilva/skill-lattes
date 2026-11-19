@@ -9,13 +9,14 @@
 [![Markdown](https://img.shields.io/badge/Skill-Markdown-000000?style=flat&logo=markdown&logoColor=white)](lattes-atualizar/SKILL.md)
 [![Browser](https://img.shields.io/badge/browser-takeover_humano-orange.svg)](#-navegação-e-captcha)
 
-[![Testes](https://img.shields.io/badge/testes-16%2F16-brightgreen.svg)](tests/)
+[![Testes](https://img.shields.io/badge/testes-17%2F17-brightgreen.svg)](tests/)
 [![Dependências](https://img.shields.io/badge/leitor-biblioteca_padrão-brightgreen.svg)](lattes-atualizar/scripts/inspect_xlsx.py)
 [![Segredos](https://img.shields.io/badge/segredos-fora_do_Git-yellow.svg)](#-segurança)
 [![Licença](https://img.shields.io/badge/licença-não_definida-lightgrey.svg)](#-licença)
 
 [Sobre](#-sobre-o-projeto) •
 [Arquitetura](#-arquitetura) •
+[Planilha modelo](#-planilha-modelo) •
 [Instalação](#-instalação) •
 [Uso](#-uso) •
 [Navegação e CAPTCHA](#-navegação-e-captcha) •
@@ -81,6 +82,39 @@ A skill resolve isso separando:
 
 ## 🏗️ Arquitetura
 
+```mermaid
+flowchart TB
+  subgraph Controle["1. Controle humano"]
+    P[Planilha XLSX]
+    X[XML do Lattes]
+    E[Comprovantes]
+    A[Aprovação do lote]
+  end
+  subgraph IA["2. Inteligência da skill"]
+    I[Inventário]
+    C[Conciliação]
+    D[Deduplicação]
+    V[Avaliação de evidências]
+    M[Manifesto aprovado]
+  end
+  subgraph Navegador["3. Execução segura"]
+    B[Chrome autenticado]
+    CAP[CAPTCHA/MFA humano]
+    F[Preenchimento]
+    S[Salvar e reabrir]
+  end
+  subgraph Saida["4. Saída verificável"]
+    R[Registro verificado]
+    W[Cópia XLSX reconciliada]
+    O[Relatório por item]
+  end
+  P & X & E --> I --> C --> D --> V --> M
+  A --> M
+  M --> B --> F --> S
+  B --- CAP
+  S --> R --> W & O
+```
+
 ### Arquitetura operacional ideal
 
 ```text
@@ -144,8 +178,39 @@ flowchart LR
 | [`assets/captcha-demo.gif`](assets/captcha-demo.gif) | Animação usada no README |
 | [`assets/captcha-demo.html`](assets/captcha-demo.html) | Demonstração interativa no navegador |
 | [`treinamento-lattes.ipynb`](treinamento-lattes.ipynb) | Laboratório fictício e exercícios |
+| [`examples/Atualizacao-Lattes-modelo.xlsx`](examples/Atualizacao-Lattes-modelo.xlsx) | Planilha vazia pronta para preenchimento |
 | [`tests/`](tests/) | Testes do leitor, notebook e simulação |
 | [`lattes-atualizar.zip`](lattes-atualizar.zip) | Pacote instalável da skill |
+
+## 📋 Planilha modelo
+
+Baixe a [planilha vazia para preenchimento](examples/Atualizacao-Lattes-modelo.xlsx). Ela contém somente:
+
+- os cabeçalhos oficiais desta skill;
+- validação `Sim/Não` nas colunas `Solicitado` e `Atualizado`;
+- aba de instruções;
+- colunas auxiliares `Coluna 4` a `Coluna 24`;
+- 500 linhas vazias prontas para uso.
+
+Não há dados pessoais, currículos, nomes, links ou resultados no modelo.
+
+### Por que disponibilizar
+
+Recomenda-se manter o modelo público, pois ele:
+
+- padroniza o formato recebido pelo agente;
+- elimina a necessidade de compartilhar a planilha atual;
+- permite iniciar a revisão sem dados reais;
+- separa testes e demonstração de informações pessoais;
+- acompanha a evolução do contrato da planilha.
+
+Para gerar outra cópia local:
+
+```powershell
+python lattes-atualizar/scripts/generate_template_xlsx.py --output ".work/Atualizacao-Lattes-modelo.xlsx"
+```
+
+Preserve a planilha original dos usuários. Toda reconciliação deve gerar uma cópia nova.
 
 ## 🚀 Instalação
 

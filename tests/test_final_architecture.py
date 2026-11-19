@@ -20,6 +20,23 @@ def load(name):
 
 
 class FinalArchitectureTests(unittest.TestCase):
+    def test_blank_xlsx_template_is_generated_without_personal_data(self):
+        script = ROOT / "lattes-atualizar" / "scripts" / "generate_template_xlsx.py"
+        spec = importlib.util.spec_from_file_location("template", script)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "modelo.xlsx"
+            module.generate(output)
+            from openpyxl import load_workbook
+            workbook = load_workbook(output)
+            sheet = workbook["Página1"]
+            self.assertEqual(sheet["A1"].value, "Ano")
+            self.assertEqual(sheet["I1"].value, "Solicitado")
+            self.assertEqual(sheet["J1"].value, "Atualizado")
+            self.assertIsNone(sheet["A2"].value)
+            self.assertIn("Instruções", workbook.sheetnames)
+
     def test_approved_batch_manifest_is_schema_bound(self):
         script = ROOT / "lattes-atualizar" / "scripts" / "create_batch_manifest.py"
         with tempfile.TemporaryDirectory() as directory:
