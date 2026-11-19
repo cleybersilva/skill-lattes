@@ -102,7 +102,7 @@ def generate(output: Path) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=Path("examples/Atualizacao-Lattes-modelo.xlsx"))
+    parser.add_argument("--output", type=Path, default=Path("examples/Planilha-Padrao-Zerada-Lattes.xlsx"))
     args = parser.parse_args()
     args.output.parent.mkdir(parents=True, exist_ok=True)
     generate(args.output)

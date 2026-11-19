@@ -14,6 +14,8 @@
 [![Segredos](https://img.shields.io/badge/segredos-fora_do_Git-yellow.svg)](#-segurança)
 [![Licença](https://img.shields.io/badge/licença-não_definida-lightgrey.svg)](#-licença)
 
+[![Baixar planilha padrão zerada](https://img.shields.io/badge/XLSX-Baixar_planilha_padrão_zerada-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white)](examples/Planilha-Padrao-Zerada-Lattes.xlsx)
+
 [Sobre](#-sobre-o-projeto) •
 [Arquitetura](#-arquitetura) •
 [Planilha modelo](#-planilha-modelo) •
@@ -178,13 +180,13 @@ flowchart LR
 | [`assets/captcha-demo.gif`](assets/captcha-demo.gif) | Animação usada no README |
 | [`assets/captcha-demo.html`](assets/captcha-demo.html) | Demonstração interativa no navegador |
 | [`treinamento-lattes.ipynb`](treinamento-lattes.ipynb) | Laboratório fictício e exercícios |
-| [`examples/Atualizacao-Lattes-modelo.xlsx`](examples/Atualizacao-Lattes-modelo.xlsx) | Planilha vazia pronta para preenchimento |
+| [`examples/Planilha-Padrao-Zerada-Lattes.xlsx`](examples/Planilha-Padrao-Zerada-Lattes.xlsx) | Planilha vazia pronta para preenchimento |
 | [`tests/`](tests/) | Testes do leitor, notebook e simulação |
 | [`lattes-atualizar.zip`](lattes-atualizar.zip) | Pacote instalável da skill |
 
 ## 📋 Planilha modelo
 
-Baixe a [planilha vazia para preenchimento](examples/Atualizacao-Lattes-modelo.xlsx). Ela contém somente:
+Baixe diretamente a **[Planilha Padrão Zerada para preenchimento](examples/Planilha-Padrao-Zerada-Lattes.xlsx)**. Ela contém somente:
 
 - os cabeçalhos oficiais desta skill;
 - validação `Sim/Não` nas colunas `Solicitado` e `Atualizado`;
@@ -207,7 +209,7 @@ Recomenda-se manter o modelo público, pois ele:
 Para gerar outra cópia local:
 
 ```powershell
-python lattes-atualizar/scripts/generate_template_xlsx.py --output ".work/Atualizacao-Lattes-modelo.xlsx"
+python lattes-atualizar/scripts/generate_template_xlsx.py --output ".work/Planilha-Padrao-Zerada-Lattes.xlsx"
 ```
 
 Preserve a planilha original dos usuários. Toda reconciliação deve gerar uma cópia nova.
