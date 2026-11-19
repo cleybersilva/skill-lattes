@@ -27,9 +27,20 @@ def main() -> int:
         page.goto(args.url, wait_until="domcontentloaded")
         print("PAUSA HUMANA: faça login, CAPTCHA e MFA na janela.")
         print("Não compartilhe senha ou código no chat.")
-        input("Pressione Enter somente após confirmar a sessão e o currículo correto... ")
-        print("SESSÃO CONFIRMADA. O agente pode continuar somente o lote aprovado.")
-        context.close()
+        print("A janela ficará aberta até você fechá-la.")
+        print("Feche o navegador quando terminar. Não envie senha ou código no chat.")
+        try:
+            while True:
+                try:
+                    page.wait_for_timeout(60_000)
+                except Exception:
+                    break
+                if page.is_closed():
+                    break
+        except KeyboardInterrupt:
+            pass
+        finally:
+            context.close()
     return 0
 
 
