@@ -8,9 +8,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "lattes-atualizar" / "scripts" / "simulate_captcha.py"
 DEMO = ROOT / "assets" / "captcha-demo.html"
+GIF = ROOT / "assets" / "captcha-demo.gif"
 
 
 class CaptchaSimulationTests(unittest.TestCase):
+    def test_readme_animation_asset_exists_and_is_animated(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("assets/captcha-demo.gif", readme)
+        self.assertTrue(GIF.is_file())
+        self.assertGreater(GIF.stat().st_size, 1000)
+
     def test_interactive_demo_has_takeover_and_reset_controls(self):
         html = DEMO.read_text(encoding="utf-8")
         self.assertIn("Executar simulação", html)
