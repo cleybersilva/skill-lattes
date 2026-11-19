@@ -26,7 +26,10 @@
 
 ---
 
-<img src="assets/captcha-demo.gif" alt="Simulação animada do fluxo de CAPTCHA e takeover humano" width="960">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/captcha-demo.gif">
+  <img src="assets/captcha-demo.gif" alt="Demonstração animada do fluxo de CAPTCHA e takeover humano" width="960">
+</picture>
 
 <sub>Demonstração de estados. Não abre navegador, não acessa o Lattes e não envia dados reais.</sub>
 
@@ -49,6 +52,19 @@ A **skill-lattes** transforma o processo de atualização de currículos em uma 
 - relata sucesso parcial por item.
 
 O pacote não contém anexos pessoais, credenciais, cookies, senhas ou tokens. Criar ou instalar esta skill não executa atualizações no CNPq.
+
+### Estado atual
+
+| Área | Estado | Evidência |
+| --- | --- | --- |
+| Inventário de XLSX | Validado | Leitor local e testes de células, fórmulas e hyperlinks |
+| Reconciliação XLSX | Implementado | Cópia nova, origem preservada e saída não sobrescritível |
+| XML/ZIP do Lattes | Implementado | Leitor estruturado local |
+| Evidências e duplicatas | Implementado | Avaliador local e normalização por DOI/título |
+| Manifesto aprovado | Implementado | Schema `lattes-batch-v1` e estado inicial autorizado |
+| Sessão humana no Chrome | Implementado | Chromium real com pausa para CAPTCHA/MFA |
+| Execução autenticada no Lattes | Pendente de validação real | Não cadastra ou publica sem confirmação humana |
+| Publicação no currículo | Pendente de validação real | Registros devem ser reabertos e conferidos |
 
 ### 🎯 Problema resolvido
 
@@ -133,6 +149,24 @@ flowchart LR
 
 ## 🚀 Instalação
 
+### Requisitos
+
+| Componente | Requisito |
+| --- | --- |
+| Python | 3.10 ou superior |
+| Sistema | Windows recomendado |
+| Harness | Claude Code, Codex, OpenCode ou leitura explícita de `SKILL.md` |
+| XLSX | Biblioteca `openpyxl` para reconciliação |
+| Navegação | Playwright e Chromium para sessão humana opcional |
+| Dados | Planilha própria, comprovantes legítimos e acesso ao currículo |
+
+Instalação das dependências opcionais:
+
+```powershell
+python -m pip install openpyxl playwright
+python -m playwright install chromium
+```
+
 ### Windows
 
 ```powershell
@@ -166,6 +200,19 @@ o currículo a partir da planilha e dos comprovantes fornecidos.
 Para atualizar, compare a cópia instalada com a origem antes de substituí-la. Para desinstalar, remova somente a pasta gerenciada.
 
 ## 💡 Uso
+
+### Fluxo mínimo recomendado
+
+1. Inventarie a planilha e os comprovantes.
+2. Gere a proposta por atividade.
+3. Confirme campos, fontes e duplicatas.
+4. Autorize um lote pequeno.
+5. Crie o manifesto do lote aprovado.
+6. Inicie a sessão humana no Chrome.
+7. Resolva login, CAPTCHA e MFA manualmente.
+8. Preencha, salve e reabra cada registro.
+9. Reconcilie uma cópia da planilha.
+10. Gere o relatório final por item.
 
 ### Auditoria sem gravação
 
@@ -335,11 +382,11 @@ Cobertura atual:
 
 Limitações:
 
-- não há login autenticado no Lattes;
-- não há teste real do tipo de CAPTCHA do CNPq;
-- não há validação do formulário atual;
-- falta integração browser conectada ao perfil humano real;
-- não há confirmação de publicação real.
+- a suíte não usa credenciais reais;
+- o CAPTCHA do CNPq não é resolvido pela suíte;
+- o formulário real não está coberto por testes end-to-end;
+- o perfil Chrome depende da sessão autenticada do usuário;
+- publicação e envio no currículo exigem validação humana.
 
 ## 🗺️ Roadmap
 
@@ -362,9 +409,41 @@ Limitações:
 - [x] Instruções e arquivos de entrada para Claude e Codex
 - [ ] Execução comportamental autenticada em todos os harnesses
 
+## 🧰 Comandos úteis
+
+### Inventariar XLSX
+
+```powershell
+python lattes-atualizar/scripts/inspect_xlsx.py "Atualizacao Lattes.xlsx" --output ".work/inventario.json"
+```
+
+### Ler exportação XML/ZIP
+
+```powershell
+python lattes-atualizar/scripts/inspect_lattes_xml.py "curriculo.zip" --output ".work/curriculo-xml.json"
+```
+
+### Criar manifesto aprovado
+
+```powershell
+python lattes-atualizar/scripts/create_batch_manifest.py ".work/itens-aprovados.json" --output ".work/lote-aprovado.json"
+```
+
+### Criar cópia reconciliada
+
+```powershell
+python lattes-atualizar/scripts/reconcile_xlsx.py "Atualizacao Lattes.xlsx" --changes ".work/alteracoes.json" --output ".work/Atualizacao reconciliada.xlsx"
+```
+
+### Abrir sessão humana
+
+```powershell
+python lattes-atualizar/scripts/live_lattes_session.py --url "https://lattes.cnpq.br/"
+```
+
 ## 📄 Licença
 
-Nenhum arquivo de licença foi adicionado ao repositório. Confirme a licença antes de reutilizar ou redistribuir o projeto.
+Nenhuma licença de código foi escolhida ainda. Não reutilize ou redistribua o projeto além do uso autorizado pelo autor até que um arquivo `LICENSE` seja adicionado.
 
 ## 👤 Autor
 
