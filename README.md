@@ -100,7 +100,7 @@ flowchart TB
     M[Manifesto aprovado]
   end
   subgraph Navegador["3. Execução segura"]
-    B[Chrome autenticado]
+    B[Browser autenticado]
     CAP[CAPTCHA/MFA humano]
     F[Preenchimento]
     S[Salvar e reabrir]
@@ -231,7 +231,7 @@ Instalação das dependências opcionais:
 
 ```powershell
 python -m pip install openpyxl playwright
-python -m playwright install chromium
+python -m playwright install chromium firefox
 ```
 
 ### Windows
@@ -461,7 +461,7 @@ Limitações:
 - a suíte não usa credenciais reais;
 - o CAPTCHA do CNPq não é resolvido pela suíte;
 - o formulário real não está coberto por testes end-to-end;
-- o perfil Chrome depende da sessão autenticada do usuário;
+- o perfil do navegador depende da sessão autenticada do usuário;
 - publicação e envio no currículo exigem validação humana.
 
 ## 🗺️ Roadmap
@@ -514,7 +514,16 @@ python lattes-atualizar/scripts/reconcile_xlsx.py "Atualizacao Lattes.xlsx" --ch
 ### Abrir sessão humana
 
 ```powershell
+# Auto-detectar Chrome, Edge ou Firefox
 python lattes-atualizar/scripts/live_lattes_session.py --url "https://lattes.cnpq.br/"
+
+# Forçar um navegador
+python lattes-atualizar/scripts/live_lattes_session.py --browser chrome
+python lattes-atualizar/scripts/live_lattes_session.py --browser edge
+python lattes-atualizar/scripts/live_lattes_session.py --browser firefox
+
+# Reconectar a uma janela Chrome/Edge já aberta em modo CDP
+python lattes-atualizar/scripts/live_lattes_session.py --use-open-browser
 ```
 
 ## 📄 Licença
