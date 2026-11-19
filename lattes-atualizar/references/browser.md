@@ -6,7 +6,26 @@ Este arquivo orienta uma integração opcional. A skill não exige Browser Use n
 
 Use o navegador somente após o usuário autorizar o lote concreto e apenas para consultar, preencher e salvar campos aprovados. Prefira um perfil ou navegador já autenticado pelo usuário. Não peça senha, sessão, cookie ou código MFA no chat.
 
-O [Browser Use](https://github.com/browser-use/browser-use) anuncia navegadores stealth, live view e suporte a CAPTCHA em sua versão em nuvem. Essa capacidade não foi validada neste projeto contra o Lattes. Seu uso não autoriza o agente a ignorar desafios humanos ou reduzir controles de acesso.
+O [Browser Use](https://github.com/browser-use/browser-use) oferece, em sua versão em nuvem:
+
+- navegadores Chromium com stealth e proxies;
+- resolução automática de CAPTCHA para desafios suportados;
+- live preview para observar ou assumir o navegador;
+- continuação da mesma sessão após takeover humano;
+- perfis para reutilizar estado de login;
+- suporte a credenciais e MFA por integrações específicas.
+
+Essas capacidades não foram validadas neste projeto contra o tipo específico de CAPTCHA exibido pelo Lattes. Resultados dependem do desafio, do provedor e da configuração da sessão. Nenhuma configuração garante que todo desafio será evitado ou resolvido.
+
+## Modos de interação
+
+| Modo | Quando usar | Comportamento |
+| --- | --- | --- |
+| Manual seguro | Padrão para o Lattes | Usuário resolve CAPTCHA e MFA. O agente pausa e aguarda confirmação. |
+| Solver cloud | Somente com autorização explícita | Browser Use pode resolver tipos de CAPTCHA suportados. O resultado ainda precisa ser verificado. |
+| Takeover humano | Login, MFA ou desafio não suportado | Usuário abre o live preview, assume o navegador e devolve o controle explicitamente. |
+
+No modo manual ou de takeover, não use OCR, clique inferencial, serviço externo ou outro processo para contornar o desafio.
 
 ## CAPTCHA e MFA
 

@@ -144,6 +144,7 @@ flowchart LR
 | [`references/categorias.md`](lattes-atualizar/references/categorias.md) | Critérios para orientações, bancas, artigos, cursos, software e demais atividades. |
 | [`references/browser.md`](lattes-atualizar/references/browser.md) | Navegação opcional e política para desafios humanos. |
 | [`scripts/inspect_xlsx.py`](lattes-atualizar/scripts/inspect_xlsx.py) | Leitor XLSX portável com biblioteca padrão do Python. |
+| [`scripts/simulate_captcha.py`](lattes-atualizar/scripts/simulate_captcha.py) | Simulação segura dos estados de CAPTCHA e takeover. |
 | [`treinamento-lattes.ipynb`](treinamento-lattes.ipynb) | Laboratório fictício com exemplos executáveis e exercícios. |
 | [`tests/cenarios.md`](tests/cenarios.md) | Cenários de aceitação comportamental. |
 | [`tests/test_inspect_xlsx.py`](tests/test_inspect_xlsx.py) | Testes do leitor XLSX e preservação da origem. |
@@ -235,7 +236,34 @@ Vazio, falso e verdadeiro são estados distintos. Textos inesperados exigem revi
 
 A navegação pode ser fornecida por Browser Use, CDP, Playwright ou outro navegador conectado ao harness. Não existe dependência obrigatória de um MCP ou provedor específico.
 
-O Browser Use anuncia navegadores stealth, visualização remota e resolução de CAPTCHA em sua plataforma. A integração e a eficácia contra o Lattes não foram validadas neste projeto.
+O Browser Use oferece navegadores stealth, live preview, takeover humano, perfis e resolução de CAPTCHA para desafios suportados em sua infraestrutura cloud. A integração e a eficácia contra o tipo específico de CAPTCHA do Lattes ainda não foram validadas neste projeto.
+
+### Simulação do fluxo
+
+<div align="center">
+
+![Simulação de um agente pausando em CAPTCHA e devolvendo o controle ao usuário](assets/captcha-simulation.svg)
+
+</div>
+
+Execute a simulação local sem abrir navegador ou acessar o Lattes:
+
+```powershell
+python lattes-atualizar\scripts\simulate_captcha.py
+```
+
+A simulação representa os estados `preparando`, `navegando`, `desafio_detectado`, `takeover_humano`, `confirmado` e `continuando`. Ela não resolve nem tenta contornar CAPTCHA.
+
+### Capacidades e limites do Browser Use
+
+| Recurso | Uso nesta skill | Estado |
+| --- | --- | --- |
+| CAPTCHA cloud | Resolver somente desafios suportados quando o usuário autorizar | Disponível no provedor; não testado no Lattes |
+| Live preview | Observar ou assumir o navegador | Disponível no provedor |
+| Perfil/cloud cookies | Reutilizar uma sessão autorizada | Disponível; autenticação continua sendo do titular |
+| MFA/2FA | Takeover humano e confirmação na interface | Não automatizar por padrão |
+| `captcha_solver=False` | Exigir intervenção humana | Padrão seguro desta skill |
+| Domínios permitidos | Restringir navegação ao domínio autorizado | Recomendado |
 
 ### Política de CAPTCHA e MFA
 

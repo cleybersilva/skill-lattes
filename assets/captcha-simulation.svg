@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Simulacao de CAPTCHA no fluxo Lattes</title>
+  <desc id="desc">A interface prepara o lote, navega ate o Lattes, detecta um desafio e devolve o controle ao usuario.</desc>
+  <rect width="1200" height="650" fill="#090b10"/>
+  <rect x="54" y="48" width="1092" height="554" rx="22" fill="#151922" stroke="#303849" stroke-width="2"/>
+  <circle cx="92" cy="86" r="8" fill="#ff6159"/>
+  <circle cx="118" cy="86" r="8" fill="#ffc24b"/>
+  <circle cx="144" cy="86" r="8" fill="#29c941"/>
+  <rect x="178" y="68" width="920" height="36" rx="18" fill="#0d1016" stroke="#303849"/>
+  <text x="198" y="92" fill="#aeb8ca" font-family="Segoe UI, Arial" font-size="16">browser-use://lattes/takeover</text>
+  <text x="92" y="154" fill="#f7f8fa" font-family="Segoe UI, Arial" font-size="31" font-weight="700">Navegue. Pause no desafio. Confirme.</text>
+  <text x="92" y="188" fill="#bbc3d1" font-family="Segoe UI, Arial" font-size="17">Atualizacao autorizada do curriculo Lattes</text>
+  <rect x="92" y="220" width="1016" height="264" rx="16" fill="#f7f8fa"/>
+  <rect x="118" y="246" width="964" height="212" rx="12" fill="#ffffff" stroke="#dfe4ec"/>
+  <text x="146" y="292" fill="#171a21" font-family="Segoe UI, Arial" font-size="22" font-weight="700">Lattes - confirmacao de seguranca</text>
+  <rect x="146" y="320" width="500" height="76" rx="10" fill="#eef2f7" stroke="#ccd4e0"/>
+  <text x="168" y="350" fill="#697386" font-family="Segoe UI, Arial" font-size="15">Desafio detectado</text>
+  <text x="168" y="378" fill="#171a21" font-family="Segoe UI, Arial" font-size="20" font-weight="700">CAPTCHA ou MFA</text>
+  <rect x="682" y="320" width="372" height="76" rx="10" fill="#fff7df" stroke="#e8c76a"/>
+  <text x="704" y="350" fill="#80651f" font-family="Segoe UI, Arial" font-size="15">Controle</text>
+  <text x="704" y="378" fill="#171a21" font-family="Segoe UI, Arial" font-size="20" font-weight="700">Usuario resolve manualmente</text>
+  <rect x="92" y="510" width="1016" height="64" rx="12" fill="#202737" stroke="#3f4d64"/>
+  <circle cx="124" cy="542" r="11" fill="#ffb454"/>
+  <text x="146" y="548" fill="#f7f8fa" font-family="Segoe UI, Arial" font-size="17">Pausado - confirme a resolucao na live preview antes de continuar</text>
+  <text x="54" y="628" fill="#7f899c" font-family="Segoe UI, Arial" font-size="13">Demonstracao local e segura - nao conecta ao navegador nem ao Lattes</text>
+</svg>
