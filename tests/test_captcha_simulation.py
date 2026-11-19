@@ -7,9 +7,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "lattes-atualizar" / "scripts" / "simulate_captcha.py"
+DEMO = ROOT / "assets" / "captcha-demo.html"
 
 
 class CaptchaSimulationTests(unittest.TestCase):
+    def test_interactive_demo_has_takeover_and_reset_controls(self):
+        html = DEMO.read_text(encoding="utf-8")
+        self.assertIn("Executar simulação", html)
+        self.assertIn("Confirmar resolução", html)
+        self.assertIn("Reiniciar", html)
+        self.assertIn("takeover", html)
+        self.assertIn("Retomando lote autorizado", html)
+
     def test_simulation_never_opens_browser_or_sends_data(self):
         result = subprocess.run(
             [sys.executable, str(SCRIPT)],

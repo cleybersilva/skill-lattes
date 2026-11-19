@@ -242,7 +242,7 @@ O Browser Use oferece navegadores stealth, live preview, takeover humano, perfis
 
 <div align="center">
 
-![Simulação de um agente pausando em CAPTCHA e devolvendo o controle ao usuário](assets/captcha-simulation.svg)
+[Abrir demonstração interativa](assets/captcha-demo.html)
 
 </div>
 
