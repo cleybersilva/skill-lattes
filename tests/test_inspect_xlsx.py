@@ -16,6 +16,8 @@ writer_spec = importlib.util.spec_from_file_location('writer', WRITER)
 writer = importlib.util.module_from_spec(writer_spec)
 writer_spec.loader.exec_module(writer)
 
+MANIFEST = Path(__file__).resolve().parents[1] / 'lattes-atualizar/scripts/create_batch_manifest.py'
+
 
 class ReaderTests(unittest.TestCase):
     def test_reconcile_creates_copy_without_changing_source(self):

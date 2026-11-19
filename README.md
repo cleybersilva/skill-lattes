@@ -65,6 +65,27 @@ A skill resolve isso separando:
 
 ## 🏗️ Arquitetura
 
+### Arquitetura operacional ideal
+
+```text
+XLSX + anexos
+  -> inventário e evidências
+  -> proposta por atividade
+  -> aprovação humana explícita
+  -> manifest do lote autorizado
+  -> navegador autenticado por sessão persistente
+  -> preenchimento registro a registro
+  -> reabertura e verificação campo a campo
+  -> reconciliação da cópia XLSX
+  -> relatório final por item
+```
+
+Cada item deve manter estado próprio:
+
+`inventariado -> conciliado -> comprovado -> proposto -> aprovado -> preenchido -> salvo -> verificado -> publicado -> reconciliado`
+
+Estados de exceção: `pendente`, `bloqueado`, `timeout`, `sessao_expirada` e `falha_de_reconciliacao`.
+
 ```mermaid
 flowchart LR
   subgraph Entrada
@@ -96,6 +117,7 @@ flowchart LR
 | [`lattes-atualizar/references/browser.md`](lattes-atualizar/references/browser.md) | Navegação, CAPTCHA, MFA e takeover humano |
 | [`lattes-atualizar/scripts/inspect_xlsx.py`](lattes-atualizar/scripts/inspect_xlsx.py) | Leitor XLSX somente com biblioteca padrão |
 | [`lattes-atualizar/scripts/reconcile_xlsx.py`](lattes-atualizar/scripts/reconcile_xlsx.py) | Escrita segura em cópia XLSX aprovada |
+| [`lattes-atualizar/scripts/create_batch_manifest.py`](lattes-atualizar/scripts/create_batch_manifest.py) | Manifesto JSON do lote aprovado |
 | [`lattes-atualizar/scripts/live_lattes_session.py`](lattes-atualizar/scripts/live_lattes_session.py) | Sessão real com pausa humana para login, CAPTCHA e MFA |
 | [`lattes-atualizar/scripts/simulate_captcha.py`](lattes-atualizar/scripts/simulate_captcha.py) | Simulação segura dos estados do fluxo |
 | [`assets/captcha-demo.gif`](assets/captcha-demo.gif) | Animação usada no README |
