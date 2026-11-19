@@ -9,7 +9,7 @@
 [![Markdown](https://img.shields.io/badge/Skill-Markdown-000000?style=flat&logo=markdown&logoColor=white)](lattes-atualizar/SKILL.md)
 [![Browser](https://img.shields.io/badge/browser-takeover_humano-orange.svg)](#-navegação-e-captcha)
 
-[![Testes](https://img.shields.io/badge/testes-9%2F9-brightgreen.svg)](tests/)
+[![Testes](https://img.shields.io/badge/testes-16%2F16-brightgreen.svg)](tests/)
 [![Dependências](https://img.shields.io/badge/leitor-biblioteca_padrão-brightgreen.svg)](lattes-atualizar/scripts/inspect_xlsx.py)
 [![Segredos](https://img.shields.io/badge/segredos-fora_do_Git-yellow.svg)](#-segurança)
 [![Licença](https://img.shields.io/badge/licença-não_definida-lightgrey.svg)](#-licença)
@@ -118,6 +118,11 @@ flowchart LR
 | [`lattes-atualizar/scripts/inspect_xlsx.py`](lattes-atualizar/scripts/inspect_xlsx.py) | Leitor XLSX somente com biblioteca padrão |
 | [`lattes-atualizar/scripts/reconcile_xlsx.py`](lattes-atualizar/scripts/reconcile_xlsx.py) | Escrita segura em cópia XLSX aprovada |
 | [`lattes-atualizar/scripts/create_batch_manifest.py`](lattes-atualizar/scripts/create_batch_manifest.py) | Manifesto JSON do lote aprovado |
+| [`lattes-atualizar/scripts/inspect_lattes_xml.py`](lattes-atualizar/scripts/inspect_lattes_xml.py) | Leitura da exportação XML/ZIP do Lattes |
+| [`lattes-atualizar/scripts/evidence_evaluator.py`](lattes-atualizar/scripts/evidence_evaluator.py) | Avaliação local de proposta por evidência |
+| [`lattes-atualizar/scripts/deduplicate.py`](lattes-atualizar/scripts/deduplicate.py) | Detecção de duplicatas por DOI ou título |
+| [`lattes-atualizar/scripts/verify_saved_record.py`](lattes-atualizar/scripts/verify_saved_record.py) | Comparação pós-salvamento com o manifesto |
+| [`lattes-atualizar/scripts/run_batch.py`](lattes-atualizar/scripts/run_batch.py) | Execução sequencial segura do lote aprovado |
 | [`lattes-atualizar/scripts/live_lattes_session.py`](lattes-atualizar/scripts/live_lattes_session.py) | Sessão real com pausa humana para login, CAPTCHA e MFA |
 | [`lattes-atualizar/scripts/simulate_captcha.py`](lattes-atualizar/scripts/simulate_captcha.py) | Simulação segura dos estados do fluxo |
 | [`assets/captcha-demo.gif`](assets/captcha-demo.gif) | Animação usada no README |
@@ -320,13 +325,20 @@ Cobertura atual:
 - prova de que a simulação não abre navegador;
 - prova de que a simulação não envia dados reais;
 - controles da demonstração interativa.
+- leitura XML/ZIP do Lattes;
+- avaliação de evidências;
+- deduplicação por DOI e título;
+- verificação de registro salvo;
+- execução sequencial de manifesto aprovado;
+- criação e validação do manifesto do lote;
+- fixture fictícia de formulário, CAPTCHA, timeout e reabertura.
 
 Limitações:
 
 - não há login autenticado no Lattes;
 - não há teste real do tipo de CAPTCHA do CNPq;
 - não há validação do formulário atual;
-- não há escrita controlada de XLSX;
+- falta integração browser conectada ao perfil humano real;
 - não há confirmação de publicação real.
 
 ## 🗺️ Roadmap
@@ -340,6 +352,12 @@ Limitações:
 - [x] Simulação animada e interativa
 - [ ] Integração autenticada com o Lattes
 - [x] Escrita segura de cópia XLSX
+- [x] Exportação XML/ZIP do Lattes
+- [x] Avaliação local de evidências
+- [x] Deduplicação por DOI e título
+- [x] Manifesto aprovado por lote
+- [x] Verificação pós-salvamento
+- [x] Fixture end-to-end fictícia
 - [ ] Validação automática contra o formulário real
 - [x] Instruções e arquivos de entrada para Claude e Codex
 - [ ] Execução comportamental autenticada em todos os harnesses

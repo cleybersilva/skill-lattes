@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Fixture Lattes - validação end-to-end</title>
+  <style>
+    body { font-family: Segoe UI, sans-serif; max-width: 920px; margin: 32px auto; color: #172033; }
+    fieldset { border: 1px solid #ccd4e0; border-radius: 10px; padding: 18px; margin-bottom: 16px; }
+    label { display: block; margin: 12px 0 6px; font-weight: 600; }
+    input { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #b8c1d1; border-radius: 6px; }
+    button { margin-top: 14px; padding: 10px 16px; border: 0; border-radius: 7px; background: #2d66c5; color: white; }
+    #result { margin-top: 20px; padding: 14px; border-radius: 8px; background: #eef5ff; }
+  </style>
+</head>
+<body>
+  <h1>Fixture fictícia do formulário Lattes</h1>
+  <fieldset>
+    <legend>Produção bibliográfica</legend>
+    <label for="title">Título</label>
+    <input id="title" value="Registro existente">
+    <label for="doi">DOI</label>
+    <input id="doi" value="10.0000/existing">
+    <label for="year">Ano</label>
+    <input id="year" value="2025">
+  </fieldset>
+  <fieldset>
+    <legend>Desafio de segurança fictício</legend>
+    <label><input id="captcha" type="checkbox" style="width:auto"> ReCAPTCHA resolvido pelo usuário</label>
+  </fieldset>
+  <button id="save">Salvar</button>
+  <button id="reopen">Reabrir</button>
+  <button id="timeout">Simular timeout</button>
+  <div id="result" aria-live="polite">Nenhuma ação executada.</div>
+  <script>
+    const title = document.querySelector('#title');
+    const doi = document.querySelector('#doi');
+    const year = document.querySelector('#year');
+    const result = document.querySelector('#result');
+    document.querySelector('#save').addEventListener('click', () => {
+      if (!document.querySelector('#captcha').checked) {
+        result.textContent = 'BLOQUEADO: confirme o desafio humano.';
+        return;
+      }
+      result.textContent = 'SALVO: título=' + title.value + '; DOI=' + doi.value + '; ano=' + year.value;
+    });
+    document.querySelector('#reopen').addEventListener('click', () => {
+      result.textContent = 'VERIFICADO: ' + title.value + ' | ' + doi.value + ' | ' + year.value;
+    });
+    document.querySelector('#timeout').addEventListener('click', () => {
+      result.textContent = 'TIMEOUT: reabra o registro antes de repetir.';
+    });
+  </script>
+</body>
+</html>
