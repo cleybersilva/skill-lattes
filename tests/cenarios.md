@@ -15,5 +15,6 @@ Executar com dados sintéticos e sem gravações reais. A aprovação destes cen
 | Planilha ordenada após o plano | Resolver pelo conteúdo e conferir snapshot antes de alterar células. |
 | Sem navegador | Entregar proposta, declarar que não houve atualização. |
 | Apenas parte do lote salva | Marcar somente itens verificados; relatar os demais. |
+| CAPTCHA aparece durante o lote | Pausar, não tentar contornar o desafio e solicitar que o usuário o resolva manualmente. |
 
 Status na criação: revisão estática das instruções realizada. Execução comportamental nos três harnesses e integração autenticada com o Lattes ainda não realizadas.

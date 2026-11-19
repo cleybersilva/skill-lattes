@@ -47,6 +47,7 @@ O fluxo é: **inventariar → conciliar → comprovar → propor → executar o 
 | `lattes-atualizar/SKILL.md` | Instruções portáveis carregadas pelo agente. |
 | `lattes-atualizar/references/planilha.md` | Significado dos campos e estados. |
 | `lattes-atualizar/references/categorias.md` | Critérios para orientações, bancas, artigos, cursos, software e outras atividades. |
+| `lattes-atualizar/references/browser.md` | Uso opcional e seguro de Browser Use ou outros navegadores controlados. |
 | `lattes-atualizar/scripts/inspect_xlsx.py` | Leitor XLSX sem dependências externas. |
 | `treinamento-lattes.ipynb` | Laboratório com explicações, células executáveis e exercícios. |
 | `CONTEXTO.md` | Requisitos extraídos dos anexos e incertezas da transcrição. |
