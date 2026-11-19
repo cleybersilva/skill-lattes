@@ -1,0 +1,11 @@
+{
+  "readme": "author-card-template.md",
+  "author": {
+    "name": "Cleyber Silva",
+    "github": "cleybersilva",
+    "lattes": "https://lattes.cnpq.br/5666713747674179",
+    "mpes_calendar": "https://cleybersilva.github.io/mpes-calendario/",
+    "mpes_repo": "https://github.com/cleybersilva/mpes-calendario",
+    "logo": "assets/logo-cesar.png"
+  }
+}
