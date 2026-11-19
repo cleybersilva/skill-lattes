@@ -501,6 +501,12 @@ Limitações:
 
 ## 🧰 Comandos úteis
 
+### Criar repositório novo com card global
+
+```powershell
+pwsh -File scripts/create_author_repo.ps1 -Name "novo-repo" -Visibility public -Push
+```
+
 ### Inventariar XLSX
 
 ```powershell
