@@ -14,6 +14,7 @@ def main() -> int:
         default=str(Path(".work/chrome-lattes-profile").resolve()),
         help="Perfil persistente para manter sessão, login e CAPTCHA resolvido",
     )
+    parser.add_argument("--debug-port", type=int, default=9222)
     parser.add_argument("--screenshot", type=Path, default=Path(".work/live-lattes.png"))
     args = parser.parse_args()
 
@@ -36,6 +37,7 @@ def main() -> int:
                 "--disable-backgrounding-occluded-windows",
                 "--disable-renderer-backgrounding",
                 "--window-size=1440,900",
+                f"--remote-debugging-port={args.debug_port}",
             ],
         }
         Path(args.profile).mkdir(parents=True, exist_ok=True)
